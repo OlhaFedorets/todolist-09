@@ -74,7 +74,9 @@ export const AppWithRedux = () => {
     }
 
     const deleteTodolist = (todolistId: string) => {
-        dispatch(deleteTodolistAC(todolistId))
+        // dispatch(deleteTodolistAC(todolistId))
+        // для redux toolkit
+        dispatch(deleteTodolistAC({id:todolistId}))
     }
 
     const changeTodolistTitle = (todolistId: string, title: string) => {
