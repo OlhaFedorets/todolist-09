@@ -19,7 +19,7 @@ const initialState: Todolist[] = []
 export const todolistsReducer = createReducer(initialState, builder => {
     builder
         .addCase(deleteTodolistAC, (state, action) => {
-        const index = state.findIndex(todolist => todolist.id !== action.payload.id)
+        const index = state.findIndex(todolist => todolist.id === action.payload.id)
         if (index !== -1) {
             state.splice(index, 1)
         }
@@ -28,13 +28,13 @@ export const todolistsReducer = createReducer(initialState, builder => {
             state.push({...action.payload, filter: 'all'})
         })
         .addCase(changeTodolistTitleAC, (state, action) => {
-            const index = state.findIndex(todolist => todolist.id !== action.payload.id)
+            const index = state.findIndex(todolist => todolist.id === action.payload.id)
             if (index !== -1) {
                 state[index].title = action.payload.title
             }
         })
         .addCase(changeTodolistFilterAC, (state, action) => {
-            const todolist = state.find(todolist => todolist.id !== action.payload.id)
+            const todolist = state.find(todolist => todolist.id === action.payload.id)
             if (todolist) {
                 todolist.filter = action.payload.filter
             }
